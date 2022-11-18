@@ -13,9 +13,6 @@ Query OK, 0 rows affected (0.00 sec)
 
 MariaDB [(none)]> flush privileges; 
 Query OK, 0 rows affected (0.00 sec)
-
-MariaDB [(none)]> exit
-Bye
 ```
 
 **2.	On change des parametres dans la machine "esclave"**
@@ -43,10 +40,19 @@ mariabackup based on MariaDB server 10.3.28-MariaDB Linux (x86_64)
 [00] 2021-08-03 16:14:30         ...done
 [00] 2021-08-03 16:14:30 Redo log (from LSN 1640838 to 1640847) was copied.
 [00] 2021-08-03 16:14:30 completed OK!
+[mehdi@db ~]$ sudo zip -r mariadb_backup.zip /home/mariadb_backup/
 ```
 
 **4. On passe le backup de la machine "maitre" à celle "esclave" avec sftp**
-   **On regle les parametres de replication**
+```
+[mehdi@slavedb ~]$ sftp mehdi@10.102.1.12
+Connected to 10.102.1.12.
+sftp> get mariadb_backup.zip
+quit
+[mehdi@slavedb ~]$ sudo unzip mariadb_backup.zip
+```
+
+**5. On regle les parametres de replication**
 ```
 [mehdi@slavedb ~]# sudo systemctl stop mariadb
 [mehdi@slavedb ~]# sudo rm -rf /var/lib/mysql/*
