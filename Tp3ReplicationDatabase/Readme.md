@@ -18,8 +18,6 @@ MariaDB [(none)]> exit
 Bye
 ```
 
-
-
 **2.	On change des parametres dans la machine "esclave"**
 ```
 [mehdi@slavedb ~]# sudo nano /etc/my.cnf.d/mariadb-server.cnf
@@ -30,23 +28,6 @@ read_only=1
 report-host=node01.srv.world
 [mehdi@slavedb ~]# systemctl restart mariadb
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 **3. On prepare le backup dans la machine "maitre"**
 ```
@@ -63,32 +44,6 @@ mariabackup based on MariaDB server 10.3.28-MariaDB Linux (x86_64)
 [00] 2021-08-03 16:14:30 Redo log (from LSN 1640838 to 1640847) was copied.
 [00] 2021-08-03 16:14:30 completed OK!
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 **4. On passe le backup de la machine "maitre" à celle "esclave" avec sftp**
    **On regle les parametres de replication**
