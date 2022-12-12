@@ -1,4 +1,4 @@
-#SPITOFY
+# SPITOFY
 
 **Configuration de 3 Vm rocky différentes**
                 
@@ -7,7 +7,7 @@
                     -proxy.tp5.linux (3)
 
 
-##Dans nos VM serveur (1 & 2)
+## Dans nos VM serveur (1 & 2)
 
 Nous y installerons docker a l'aide de la documentation officielle que vous pouvez trouver avec le lien suivant: https://docs.docker.com/engine/install/centos/.
 
@@ -37,7 +37,8 @@ Ensuite naviguer dans le dossier et y faire la commande suivante:
 docker compose up -d
 ```
 
-##Dans la VM proxy (3)
+
+## Dans la VM proxy (3)
 
 **Installation de Nginx**
 
@@ -68,7 +69,7 @@ sudo firewall-cmd --add-port=443/tcp --permanent
 sudo firewall-cmd --reload
 ```
 
-##MONITORING
+## MONITORING
 
 **Dans toutes les machines**
 
